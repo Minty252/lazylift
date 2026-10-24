@@ -1,0 +1,440 @@
+/* lazylift.cc. Taken from the /coach page of fastpal.com (2026-10-24). Warm white, almost
+   black text, burnt orange as the only accent: white on the orange 5.2:1, secondary
+   text on the ground 5.4:1. */
+:root {
+  --cc-ground: #fffaf5;
+  --cc-ink: #1b1a1f;
+  --cc-body: #45434d;
+  --cc-muted: #64616c;
+  --cc-line: #e7e0d8;
+  --cc-accent: #c2410c;
+  --cc-accent-hover: #9a3412;
+  --cc-tint: #fdeee4;
+  --cc-panel: #ffffff;
+  --cc-bubble: #f1efec;
+  --cc-on-ink: #ffffff;
+  --cc-font-display: "Bricolage Grotesque";
+  --cc-font-body: "Public Sans";
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--cc-ground);
+}
+.cc-root {
+  min-height: 100dvh;
+  background: var(--cc-ground);
+  color: var(--cc-ink);
+  font-family: var(--cc-font-body), system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+}
+.cc-root h1,
+.cc-root h2,
+.cc-root h3 {
+  font-family: var(--cc-font-display), system-ui, sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+.cc-root p {
+  margin: 0;
+}
+.cc-root a {
+  color: var(--cc-accent);
+}
+.cc-wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.cc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.cc-marke {
+  font-family: var(--cc-font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+}
+.cc-header-rechts {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cc-root .cc-btn,
+.cc-root .cc-btn-klein,
+.cc-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  background: var(--cc-accent);
+  color: var(--cc-on-ink);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.cc-root .cc-btn,
+.cc-form button {
+  min-height: 54px;
+  padding: 0 30px;
+}
+.cc-root .cc-btn-klein {
+  min-height: 40px;
+  padding: 0 18px;
+  font-size: 15px;
+}
+.cc-root .cc-btn:hover,
+.cc-root .cc-btn-klein:hover,
+.cc-form button:hover {
+  background: var(--cc-accent-hover);
+  color: var(--cc-on-ink);
+}
+.cc-form button:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.cc-hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 64px;
+}
+.cc-hero-text {
+  flex: 1 1 460px;
+  min-width: 0;
+}
+.cc-oben {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--cc-accent);
+  margin-bottom: 14px !important;
+}
+.cc-hero h1 {
+  font-size: clamp(38px, 5.6vw, 58px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+.cc-lead {
+  margin: 22px 0 28px !important;
+  color: var(--cc-body);
+  max-width: 560px;
+}
+.cc-preis {
+  margin-top: 12px !important;
+  font-size: 15px;
+  color: var(--cc-muted);
+}
+
+/* Vorschau: erfundener Chat links, Seitenleiste mit zwei Entwuerfen rechts. */
+.cc-vorschau {
+  flex: 1 1 380px;
+  min-width: 0;
+  margin: 0;
+}
+.cc-fenster {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  border: 1px solid var(--cc-line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--cc-panel);
+  box-shadow: 0 18px 50px color-mix(in srgb, var(--cc-ink) 10%, transparent);
+  font-size: 15px;
+}
+.cc-chat {
+  padding: 18px;
+  background: var(--cc-bubble);
+}
+.cc-kanal {
+  font-weight: 600;
+  color: var(--cc-muted);
+  margin-bottom: 14px !important;
+}
+.cc-blase {
+  background: var(--cc-panel);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+.cc-autor {
+  display: block;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--cc-accent);
+}
+.cc-panel {
+  padding: 18px;
+  border-left: 1px solid var(--cc-line);
+}
+.cc-panel-titel {
+  font-family: var(--cc-font-display), system-ui, sans-serif;
+  font-weight: 700;
+  margin-bottom: 12px !important;
+}
+.cc-entwurf {
+  border: 1px solid var(--cc-line);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.cc-entwurf + .cc-entwurf {
+  margin-top: 10px;
+}
+.cc-entwurf span {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--cc-tint);
+  color: var(--cc-accent-hover);
+  font-size: 13px;
+  font-weight: 600;
+}
+.cc-vorschau figcaption {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--cc-muted);
+  text-align: center;
+}
+
+.cc-abschnitt {
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+.cc-abschnitt h2,
+.cc-fuer-wen h2,
+.cc-liste h2 {
+  font-size: clamp(28px, 4vw, 38px);
+  margin-bottom: 24px;
+}
+.cc-karten {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+.cc-karte {
+  background: var(--cc-panel);
+  border: 1px solid var(--cc-line);
+  border-radius: 14px;
+  padding: 22px;
+}
+.cc-karte h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.cc-karte p {
+  color: var(--cc-body);
+}
+
+.cc-band {
+  background: var(--cc-tint);
+}
+.cc-fuer-wen {
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+.cc-fuer-wen p {
+  max-width: 720px;
+  font-size: 20px;
+}
+
+.cc-schritte {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+}
+.cc-nr {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--cc-ink);
+  color: var(--cc-on-ink);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.cc-schritte h3 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+.cc-schritte p {
+  color: var(--cc-body);
+}
+
+.cc-fragen details {
+  border-bottom: 1px solid var(--cc-line);
+  padding: 16px 0;
+}
+.cc-fragen summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.cc-fragen details p {
+  margin-top: 8px !important;
+  color: var(--cc-body);
+}
+
+.cc-liste {
+  background: var(--cc-ink);
+  color: var(--cc-on-ink);
+}
+.cc-liste-innen {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  max-width: 760px;
+}
+.cc-liste-innen > p {
+  margin-bottom: 28px !important;
+}
+.cc-liste a {
+  color: var(--cc-on-ink);
+}
+.cc-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.cc-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 15px;
+}
+.cc-form input,
+.cc-form textarea {
+  font: inherit;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--cc-on-ink) 30%, transparent);
+  background: color-mix(in srgb, var(--cc-on-ink) 8%, transparent);
+  color: var(--cc-on-ink);
+}
+.cc-form input::placeholder,
+.cc-form textarea::placeholder {
+  color: color-mix(in srgb, var(--cc-on-ink) 55%, transparent);
+}
+.cc-form-breit {
+  grid-column: 1 / -1;
+}
+.cc-form-ende {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.cc-form-hinweis,
+.cc-form-fehler {
+  font-size: 14px;
+}
+.cc-form-falle {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cc-form-danke .cc-betrag {
+  font-family: var(--cc-font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 6px !important;
+}
+
+.cc-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding-top: 28px;
+  padding-bottom: 28px;
+  font-size: 15px;
+  color: var(--cc-muted);
+}
+.cc-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+@media (max-width: 640px) {
+  .cc-form {
+    grid-template-columns: 1fr;
+  }
+  .cc-fenster {
+    grid-template-columns: 1fr;
+  }
+  .cc-panel {
+    border-left: 0;
+    border-top: 1px solid var(--cc-line);
+  }
+  .cc-header .cc-btn-klein {
+    display: none;
+  }
+}
+
+/* DE | EN switch, as on hofmannmoritz.com and fastpal.com */
+.st-sprachwahl {
+  flex: none;
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  border-radius: 999px;
+}
+.cc-root .st-sprachwahl a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: inherit;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.cc-root .st-sprachwahl a[aria-current="true"] {
+  opacity: 1;
+  font-weight: 600;
+  background: color-mix(in srgb, currentColor 14%, transparent);
+}
+
+/* Legal pages */
+.cc-recht {
+  padding-top: 32px;
+  padding-bottom: 72px;
+  max-width: 760px;
+}
+.cc-recht h1 {
+  font-size: 40px;
+  margin-bottom: 24px;
+}
+.cc-recht h2 {
+  font-size: 22px;
+  margin: 32px 0 8px;
+}
+.cc-recht p + p {
+  margin-top: 10px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
